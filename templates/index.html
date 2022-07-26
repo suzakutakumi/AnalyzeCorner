@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>パタラン</title>
+</head>
+
+<body>
+    <input type="text" id="field">
+
+    <button id="button_send">送信</button>
+    <div id="val"></div>
+
+    <script>
+        let field = document.getElementById("field")
+        let value = document.getElementById("val")
+
+        document.getElementById("button_send").onclick = function () {
+            const method = "POST"
+            const headers = {
+                "Accept": "*/*",
+                "Content-Type": "plain/text"
+            }
+            const body = field.value
+            fetch("/analyze", { method, headers, body })
+            .then((res) => res.text()).then((text) => {
+                value.innerText = text
+            })
+        }
+    </script>
+</body>
+
+</html>
