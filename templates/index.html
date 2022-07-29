@@ -2,13 +2,30 @@
 
 <head>
     <title>パタラン</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
 </head>
 
 <body>
-    <input type="text" id="field">
-
-    <button id="button_send">送信</button>
-    <div id="val"></div>
+    <div class="center">
+        <div class="title_text">
+            Analyze Corner
+        </div>
+        <div class="block">
+            <input class="textbox" type="text" id="field">
+            <!-- <input class="textbox" type="text" style="width: 360px; height: 60px;" id="field"> -->
+        </div>
+        <div class=" block">
+            <button class="entry" id="button_send">Enter</button>
+        </div>
+    </div>
+    <div class="block center">
+        <p class="output_text" id="val">I stand
+            <a class="strong">in</a> the corner of room.
+        </p>
+    </div>
 
     <script>
         let field = document.getElementById("field")
@@ -22,9 +39,9 @@
             }
             const body = field.value
             fetch("/analyze", { method, headers, body })
-            .then((res) => res.text()).then((text) => {
-                value.innerText = text
-            })
+                .then((res) => res.text()).then((text) => {
+                    value.innerText = text
+                })
         }
     </script>
 </body>
