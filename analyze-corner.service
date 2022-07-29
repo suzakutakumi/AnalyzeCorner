@@ -1,0 +1,11 @@
+[Unit]
+Description = analyze corner
+
+[Service]
+WorkingDirectory=/opt/AnalyzeCorner
+ExecStart=python3 app.py
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
