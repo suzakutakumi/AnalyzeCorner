@@ -20,6 +20,8 @@ class KindCronerThing(IntEnum):
 def AnalysisOfWhatCorner(text):
   words=nltk.word_tokenize(text)  # Separate sentences into words.
   tags=nltk.pos_tag(words)  # Attach a POS tag to each word.
+  if '_' not in words:
+    return ['?']
   n=words.index('_')  # Find the number of in/on/at position in a word.
 
   # Check for "the corner" after the underscore.
@@ -50,7 +52,7 @@ def AnalyzeCorner(sentence):
 
   if cornerThing==None:
     print("Text is not match!")
-    return []
+    return ["?"]
 
   if cornerThing=='': # When there is nothing behind "_ the corner"
     print("It is not clearly stated what the corner is.")
