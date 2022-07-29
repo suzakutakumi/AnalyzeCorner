@@ -5,7 +5,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="/static/test.css">
 </head>
 
 <body>
@@ -22,8 +22,7 @@
         </div>
     </div>
     <div class="block center">
-        <p class="output_text" id="val">I stand
-            <a class="strong">in</a> the corner of room.
+        <p class="output_text" id="val">
         </p>
     </div>
 
@@ -40,7 +39,7 @@
             const body = field.value
             fetch("/analyze", { method, headers, body })
                 .then((res) => res.text()).then((text) => {
-                    value.innerText = text
+                    value.innerHTML = body.replace('_',"<a class='strong'>"+text+"</a>")
                 })
         }
     </script>
